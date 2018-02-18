@@ -57,9 +57,6 @@ func resizeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer resp.Body.Close()
 
-	// Store the content type so that we can send it to in the response
-	contentType := resp.Header.Get("Content-Type")
-
 	// govips returns the output of the image as a []byte object. We don't need
 	// it since we are directly piping it to the ResponseWriter
 	_, err = vips.NewTransform().
@@ -74,6 +71,4 @@ func resizeHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-
-	w.Header().Set("Content-Type", contentType)
 }
