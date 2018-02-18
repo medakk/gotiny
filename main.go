@@ -76,5 +76,4 @@ func resizeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", contentType)
-	w.WriteHeader(http.StatusCreated)
 }
